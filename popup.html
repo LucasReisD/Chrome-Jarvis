@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JARVIS | Assistente Pessoal Local</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand-info">
+        <span class="sub-label">ASSISTENTE PESSOAL LOCAL</span>
+        <h1 class="brand-title">J.A.R.V.I.S</h1>
+      </div>
+      <div class="status-indicator" title="Assistente ativo">
+        <span class="pulse-dot"></span>
+        <span>ATIVO</span>
+      </div>
+    </header>
+
+    <section class="system-message">
+      <div class="sys-label">CENTRAL DE COMANDO <span id="date-caption"></span></div>
+      <div class="sys-greeting" id="greeting-text">OLÁ, BEM-VINDO AO JARVIS</div>
+      <div class="sys-subtext" id="status-banner">Seus dados ficam neste dispositivo.</div>
+      <div class="core-visual" aria-hidden="true">
+        <span class="core-orbit core-orbit-outer"></span>
+        <span class="core-orbit core-orbit-inner"></span>
+        <span class="core-crosshair"></span>
+        <span class="core-mark">J</span>
+        <span class="core-readout">CORE / 01</span>
+      </div>
+    </section>
+
+    <main id="view-dashboard" class="view active">
+      <section class="quick-capture" aria-label="Captura rápida">
+        <div class="section-heading">
+          <span>CAPTURA RÁPIDA</span>
+          <span class="section-kicker">SEM SAIR DA PÁGINA</span>
+        </div>
+        <div class="capture-controls">
+          <select id="capture-type" aria-label="Tipo de item">
+            <option value="task">Tarefa</option>
+            <option value="note">Nota</option>
+          </select>
+          <input type="text" id="capture-input" placeholder="O que você precisa lembrar?" maxlength="160">
+          <button id="btn-capture" type="button" aria-label="Adicionar">+</button>
+        </div>
+      </section>
+
+      <div class="grid-cards">
+        <div class="card" id="card-tasks" role="button" tabindex="0" aria-label="Abrir tarefas">
+          <div class="card-header">
+            <span class="card-title">TAREFAS</span>
+            <span class="card-badge" id="dash-task-count">00</span>
+          </div>
+          <div class="card-footer">
+            <span>PENDENTES</span>
+            <span class="arrow">→</span>
+          </div>
+        </div>
+
+        <div class="card" id="card-notes" role="button" tabindex="0" aria-label="Abrir anotações">
+          <div class="card-header">
+            <span class="card-title">NOTAS</span>
+            <span class="card-badge">+</span>
+          </div>
+          <div class="card-footer">
+            <span>ANOTAÇÕES</span>
+            <span class="arrow">→</span>
+          </div>
+        </div>
+
+        <div class="card" id="card-links" role="button" tabindex="0" aria-label="Abrir links favoritos">
+          <div class="card-header">
+            <span class="card-title">LINKS</span>
+            <span class="card-badge">›</span>
+          </div>
+          <div class="card-footer">
+            <span>FAVORITOS</span>
+            <span class="arrow">→</span>
+          </div>
+        </div>
+
+        <div class="card" id="card-tools" role="button" tabindex="0" aria-label="Abrir ferramentas">
+          <div class="card-header">
+            <span class="card-title">FERRAMENTAS</span>
+            <span class="card-badge">⚙</span>
+          </div>
+          <div class="card-footer">
+            <span>UTILITÁRIOS</span>
+            <span class="arrow">→</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="system-status-panel">
+        <div class="status-panel-header">
+          <span>ESTADO DO SISTEMA</span>
+          <span class="status-online">LOCAL</span>
+        </div>
+        <div class="status-row">
+          <span><span class="dot green">●</span> JARVIS</span>
+          <span class="status-val">PRONTO</span>
+        </div>
+        <div class="status-row">
+          <span><span class="dot green">●</span> ARMAZENAMENTO</span>
+          <span class="status-val">NO DISPOSITIVO</span>
+        </div>
+      </section>
+    </main>
+
+    <section id="view-tasks" class="view">
+      <div class="view-header">
+        <button class="btn-back" data-target="dashboard">← VOLTAR</button>
+        <h2>TAREFAS</h2>
+      </div>
+      <div class="input-group">
+        <input type="text" id="task-input" placeholder="Nova tarefa..." maxlength="160" aria-label="Nova tarefa">
+        <button id="btn-add-task" type="button" aria-label="Adicionar tarefa">+</button>
+      </div>
+      <ul class="item-list" id="task-list"></ul>
+    </section>
+
+    <section id="view-notes" class="view">
+      <div class="view-header">
+        <button class="btn-back" data-target="dashboard">← VOLTAR</button>
+        <h2>ANOTAÇÕES</h2>
+      </div>
+      <div class="input-group vertical">
+        <input type="text" id="note-title" placeholder="Título da nota (opcional)" maxlength="80" aria-label="Título da nota">
+        <textarea id="note-body" placeholder="Escreva sua anotação..." rows="3" maxlength="2000" aria-label="Texto da anotação"></textarea>
+        <button id="btn-add-note" type="button">SALVAR NOTA</button>
+      </div>
+      <div class="item-list" id="note-list"></div>
+    </section>
+
+    <section id="view-links" class="view">
+      <div class="view-header">
+        <button class="btn-back" data-target="dashboard">← VOLTAR</button>
+        <h2>LINKS FAVORITOS</h2>
+      </div>
+      <div class="input-group">
+        <input type="text" id="link-title" placeholder="Nome (ex.: GitHub)" maxlength="60" aria-label="Nome do link">
+        <input type="url" id="link-url" placeholder="https://..." aria-label="Endereço do link">
+        <button id="btn-add-link" type="button" aria-label="Adicionar link">+</button>
+      </div>
+      <div class="links-grid" id="link-list"></div>
+    </section>
+
+    <section id="view-tools" class="view">
+      <div class="view-header">
+        <button class="btn-back" data-target="dashboard">← VOLTAR</button>
+        <h2>FERRAMENTAS</h2>
+      </div>
+      <div class="tool-tabs" role="tablist" aria-label="Utilitários">
+        <button class="tool-tab active" type="button" role="tab" aria-selected="true" data-tool="json">JSON</button>
+        <button class="tool-tab" type="button" role="tab" aria-selected="false" data-tool="base64">BASE64</button>
+        <button class="tool-tab" type="button" role="tab" aria-selected="false" data-tool="timestamp">TEMPO</button>
+        <button class="tool-tab" type="button" role="tab" aria-selected="false" data-tool="password">SENHA</button>
+      </div>
+      <div class="tool-workbench">
+        <label class="tool-label" id="tool-input-label" for="tool-input">JSON DE ENTRADA</label>
+        <textarea id="tool-input" placeholder='Cole um JSON, por exemplo: {"status":"ok"}' rows="5" spellcheck="false"></textarea>
+        <select id="base64-mode" aria-label="Ação Base64" hidden>
+          <option value="encode">Codificar para Base64</option>
+          <option value="decode">Decodificar de Base64</option>
+        </select>
+        <div id="password-options" class="password-options" hidden>
+          <label for="password-length">Comprimento <output id="password-length-value">20</output></label>
+          <input id="password-length" type="range" min="12" max="48" value="20">
+          <div class="password-checks">
+            <label><input type="checkbox" data-char-set="lower" checked> a-z</label>
+            <label><input type="checkbox" data-char-set="upper" checked> A-Z</label>
+            <label><input type="checkbox" data-char-set="number" checked> 0-9</label>
+            <label><input type="checkbox" data-char-set="symbol" checked> símbolos</label>
+          </div>
+        </div>
+        <div class="tool-actions">
+          <button id="btn-run-tool" type="button">FORMATAR JSON</button>
+          <span id="tool-status" role="status" aria-live="polite"></span>
+        </div>
+        <label class="tool-label" for="tool-result">RESULTADO</label>
+        <textarea id="tool-result" rows="5" readonly placeholder="O resultado aparece aqui."></textarea>
+        <button id="btn-copy-output" class="copy-button" type="button" disabled> COPIAR RESULTADO</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      JARVIS <span>·</span> SEUS DADOS, SUAS REGRAS
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
