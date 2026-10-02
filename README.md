@@ -34,7 +34,32 @@ O **JARVIS** é uma extensão para o Google Chrome projetada para trazer automa�
 
 ---
 
-## 📦 Como Instalar e Testar Localmente (Modo Desenvolvedor)
+## 📦## 📥 Como baixar o projeto (Arquivo ZIP)
+
+### Método 1: Download direto pelo GitHub (Navegador)
+1. No topo desta página, clique no botão verde **`<> Code`**.
+2. Selecione a opção **`Download ZIP`**.
+3. Extraia o arquivo `.zip` baixado em seu computador.
+
+---
+
+### Método 2: Link direto de download
+Você também pode baixar a versão mais recente do branch principal diretamente clicando no link abaixo:
+
+👉 [**Baixar JARVIS (.zip)**](https://github.com/LucasReisD/JARVIS/archive/refs/heads/main.zip)
+
+---
+
+### Método 3: Via linha de comando (Linux / macOS / PowerShell)
+
+Se você preferir baixar e extrair via terminal sem precisar clonar o repositório via `git`:
+
+**Linux / macOS (Bash/Zsh):**
+```bash
+wget [https://github.com/LucasReisD/JARVIS/archive/refs/heads/main.zip](https://github.com/LucasReisD/JARVIS/archive/refs/heads/main.zip) -O JARVIS.zip
+unzip JARVIS.zip
+cd JARVIS-main
+ Como Instalar e Testar Localmente (Modo Desenvolvedor)
 
 Como o projeto está em desenvolvimento, você pode carregá-lo facilmente no seu Google Chrome:
 
